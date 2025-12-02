@@ -20,7 +20,12 @@
       "Bash(timeout 15 bash:*)",
       "Bash(test:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: YTNews platform\n\nComplete news platform with user management and organization system.\n\nFeatures:\n- User authentication with JWT\n- Role-based access control (User, Moderator, Admin)\n- Announcements management\n- Organizations and employees\n- Join request workflow\n- Category system\n- Admin panel for users, categories, and announcements\n- Rich text editor for announcements\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(node --version:*)",
+      "Bash(npm:*)",
+      "Bash(nginx -v:*)",
+      "Bash(git --version:*)"
     ],
     "deny": [],
     "ask": []
