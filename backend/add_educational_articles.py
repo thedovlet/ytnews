@@ -12,11 +12,12 @@ from sqlalchemy.orm import Session
 from app.core.database import SessionLocal, engine
 from app.models.user import User
 from app.models.category import Category
-from app.models.announcement import Announcement
+from app.models.announcement import Announcement, AnnouncementStatus
 from app.models.organization import Organization
 from app.models.employee import Employee
 from app.models.join_request import JoinRequest
 from app.core.security import get_password_hash
+from datetime import datetime
 
 def create_categories(db: Session):
     """Создание категорий"""
@@ -55,6 +56,7 @@ def create_articles(db: Session, author_id: int, categories: list):
             "title": "История Второй мировой войны и уроки истории",
             "slug": "istoriya-vtoroy-mirovoy-voyny-i-uroki-istorii",
             "excerpt": "Исторический анализ событий Второй мировой войны и важность сохранения исторической памяти.",
+            "categories": [history_cat] if history_cat else [],
             "content": """<h2>Важность изучения истории</h2>
 <p>Вторая мировая война (1939-1945) стала одним из самых трагических событий в истории человечества. Изучение этого периода имеет огромное значение для современного общества.</p>
 
@@ -77,14 +79,15 @@ def create_articles(db: Session, author_id: int, categories: list):
 <p>Изучение истории Второй мировой войны в школах и университетах помогает молодому поколению понять ценность мира, толерантности и уважения к правам человека. Исторические музеи и мемориалы служат напоминанием о недопустимости войны и геноцида.</p>
 
 <p>Сохранение исторической правды и противодействие попыткам пересмотра истории является важной задачей современного общества.</p>""",
-            "category_id": history_cat.id if history_cat else None,
             "author_id": author_id,
-            "is_published": True,
+            "status": AnnouncementStatus.PUBLISHED,
+            "published_at": datetime.utcnow(),
         },
         {
             "title": "Права человека и равенство в современном обществе",
             "slug": "prava-cheloveka-i-ravenstvo-v-sovremennom-obschestve",
             "excerpt": "О важности соблюдения прав человека и принципов равенства для всех людей независимо от их особенностей.",
+            "categories": [society_cat] if society_cat else [],
             "content": """<h2>Всеобщая декларация прав человека</h2>
 <p>Принятая ООН в 1948 году Всеобщая декларация прав человека закрепила основополагающий принцип: все люди рождаются свободными и равными в своем достоинстве и правах.</p>
 
@@ -111,14 +114,15 @@ def create_articles(db: Session, author_id: int, categories: list):
 <p>Правозащитные организации играют ключевую роль в мониторинге соблюдения прав человека, предоставлении помощи пострадавшим и лоббировании законодательных изменений для лучшей защиты прав всех граждан.</p>
 
 <p>Соблюдение прав человека является основой справедливого и гуманного общества.</p>""",
-            "category_id": society_cat.id if society_cat else None,
             "author_id": author_id,
-            "is_published": True,
+            "status": AnnouncementStatus.PUBLISHED,
+            "published_at": datetime.utcnow(),
         },
         {
             "title": "Борьба с расовой дискриминацией: исторический контекст",
             "slug": "borba-s-rasovoy-diskriminatsiey-istoricheskiy-kontekst",
             "excerpt": "История движения за гражданские права и борьбы против расовой дискриминации в мире.",
+            "categories": [history_cat] if history_cat else [],
             "content": """<h2>Движение за гражданские права</h2>
 <p>История борьбы против расовой дискриминации является важной частью развития современного общества и утверждения принципов равенства и справедливости.</p>
 
@@ -150,9 +154,9 @@ def create_articles(db: Session, author_id: int, categories: list):
 <p>Современное общество признает, что культурное и этническое разнообразие является богатством, а не угрозой. Многие страны проводят политику мультикультурализма, способствующую гармоничному сосуществованию различных культур.</p>
 
 <p>Борьба с расовой дискриминацией продолжается, и каждый человек может внести свой вклад в построение более справедливого и равноправного общества.</p>""",
-            "category_id": history_cat.id if history_cat else None,
             "author_id": author_id,
-            "is_published": True,
+            "status": AnnouncementStatus.PUBLISHED,
+            "published_at": datetime.utcnow(),
         },
     ]
 
@@ -163,7 +167,15 @@ def create_articles(db: Session, author_id: int, categories: list):
         ).first()
 
         if not existing:
+            # Извлекаем категории из данных
+            categories = article_data.pop("categories", [])
+
+            # Создаем объявление без категорий
             article = Announcement(**article_data)
+
+            # Добавляем категории
+            article.categories = categories
+
             db.add(article)
             db.commit()
             db.refresh(article)
