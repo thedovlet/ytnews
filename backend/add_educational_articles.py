@@ -13,6 +13,9 @@ from app.core.database import SessionLocal, engine
 from app.models.user import User
 from app.models.category import Category
 from app.models.announcement import Announcement
+from app.models.organization import Organization
+from app.models.employee import Employee
+from app.models.join_request import JoinRequest
 from app.core.security import get_password_hash
 
 def create_categories(db: Session):
