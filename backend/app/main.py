@@ -33,7 +33,7 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 def root():
     """Root endpoint"""
     return {
-        "message": "YTNews API",
+        "message": "YCNews API",
         "version": settings.VERSION,
         "docs": f"{settings.API_V1_STR}/docs"
     }

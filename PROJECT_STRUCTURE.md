@@ -1,9 +1,9 @@
-# Структура проекта YTNews
+# Структура проекта YCNews
 
 ## Обзор директорий
 
 ```
-ytnews/
+YCNews/
 ├── backend/                    # FastAPI Backend
 │   ├── alembic/               # Миграции базы данных
 │   │   ├── versions/          # Файлы миграций

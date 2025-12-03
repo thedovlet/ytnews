@@ -1,6 +1,6 @@
 @echo off
 echo ========================================
-echo YTNews Setup Script
+echo YCNews Setup Script
 echo ========================================
 echo.
 

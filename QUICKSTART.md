@@ -1,4 +1,4 @@
-# Быстрый старт YTNews
+# Быстрый старт YCNews
 
 ## Шаг 1: Установка PostgreSQL
 
@@ -15,11 +15,11 @@
 psql -U postgres
 
 # Создайте базу данных
-CREATE DATABASE ytnews;
+CREATE DATABASE YCNews;
 
 # Создайте пользователя (опционально)
-CREATE USER ytnews_user WITH PASSWORD 'your_password';
-GRANT ALL PRIVILEGES ON DATABASE ytnews TO ytnews_user;
+CREATE USER YCNews_user WITH PASSWORD 'your_password';
+GRANT ALL PRIVILEGES ON DATABASE YCNews TO YCNews_user;
 
 # Выйдите из psql
 \q
@@ -45,7 +45,7 @@ copy .env.example .env
 
 Отредактируйте файл `.env`:
 ```env
-DATABASE_URL=postgresql://postgres:ваш_пароль@localhost:5432/ytnews
+DATABASE_URL=postgresql://postgres:ваш_пароль@localhost:5432/YCNews
 SECRET_KEY=сгенерируйте_случайную_строку_минимум_32_символа
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=30
@@ -70,7 +70,7 @@ python init_db.py
 ```
 
 Будет создан админ с учетными данными:
-- Email: `admin@ytnews.com`
+- Email: `admin@YCNews.com`
 - Password: `admin123`
 
 **⚠️ ВАЖНО: Измените пароль после первого входа!**
@@ -105,7 +105,7 @@ Frontend запустится на: http://localhost:5173
 1. Откройте браузер: http://localhost:5173
 2. Нажмите "Войти"
 3. Введите:
-   - Email: `admin@ytnews.com`
+   - Email: `admin@YCNews.com`
    - Password: `admin123`
 4. После входа перейдите в "Админ-панель"
 
