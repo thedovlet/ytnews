@@ -24,11 +24,11 @@ def init_db():
     db = SessionLocal()
     try:
         # Check if admin already exists
-        admin = db.query(User).filter(User.email == "admin@ytnews.com").first()
+        admin = db.query(User).filter(User.email == "admin@ycnews.com").first()
         if not admin:
             # Create admin user
             admin = User(
-                email="admin@ytnews.com",
+                email="admin@ycnews.com",
                 hashed_password=get_password_hash("admin"),
                 full_name="Administrator",
                 role=UserRole.ADMIN,
@@ -37,7 +37,7 @@ def init_db():
             db.add(admin)
             db.commit()
             print("[+] Admin user created successfully!")
-            print("Email: admin@ytnews.com")
+            print("Email: admin@ycnews.com")
             print("Password: admin")
             print("WARNING: Please change the password after first login!")
         else:

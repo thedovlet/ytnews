@@ -195,7 +195,7 @@ def main():
         print("="*60 + "\n")
 
         # Получаем администратора
-        admin = db.query(User).filter(User.email == "admin@ytnews.com").first()
+        admin = db.query(User).filter(User.email == "admin@ycnews.com").first()
         if not admin:
             print("❌ Администратор не найден. Сначала запустите init_db.py")
             return

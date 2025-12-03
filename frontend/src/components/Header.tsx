@@ -19,7 +19,7 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link to="/" className="text-2xl font-bold text-primary-600">
-              YTNews
+              YCNews
             </Link>
             <nav className="ml-10 flex space-x-8">
               <Link
