@@ -27,3 +27,5 @@ class User(Base):
     announcements = relationship("Announcement", back_populates="author")
     employments = relationship("Employee", back_populates="user")
     join_requests = relationship("JoinRequest", back_populates="user")
+    events = relationship("Event", back_populates="author")
+    event_registrations = relationship("EventRegistration", back_populates="user")

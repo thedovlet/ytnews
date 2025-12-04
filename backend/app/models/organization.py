@@ -22,3 +22,4 @@ class Organization(Base):
     employees = relationship("Employee", back_populates="organization")
     announcements = relationship("Announcement", back_populates="organization")
     join_requests = relationship("JoinRequest", back_populates="organization")
+    events = relationship("Event", back_populates="organization")
