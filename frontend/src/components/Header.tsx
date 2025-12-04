@@ -29,6 +29,12 @@ export default function Header() {
                 Главная
               </Link>
               <Link
+                to="/events"
+                className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium"
+              >
+                Мероприятия
+              </Link>
+              <Link
                 to="/organizations"
                 className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium"
               >

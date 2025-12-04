@@ -10,6 +10,8 @@ import HomePage from './pages/HomePage'
 import AnnouncementPage from './pages/AnnouncementPage'
 import OrganizationsPage from './pages/OrganizationsPage'
 import OrganizationPage from './pages/OrganizationPage'
+import EventsPage from './pages/EventsPage'
+import EventDetailPage from './pages/EventDetailPage'
 import ProfilePage from './pages/ProfilePage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
@@ -46,6 +48,8 @@ function App() {
             <Route path="/announcements/:slug" element={<AnnouncementPage />} />
             <Route path="/organizations" element={<OrganizationsPage />} />
             <Route path="/organizations/:slug" element={<OrganizationPage />} />
+            <Route path="/events" element={<EventsPage />} />
+            <Route path="/events/:slug" element={<EventDetailPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
 

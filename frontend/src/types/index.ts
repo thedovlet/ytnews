@@ -212,3 +212,103 @@ export interface JoinRequestCreate {
   position: string
   message?: string
 }
+
+// Events
+
+export enum EventStatus {
+  DRAFT = 'draft',
+  PUBLISHED = 'published',
+  CANCELLED = 'cancelled',
+  COMPLETED = 'completed',
+}
+
+export enum RegistrationStatus {
+  PENDING = 'pending',
+  CONFIRMED = 'confirmed',
+  CANCELLED = 'cancelled',
+}
+
+export interface Event {
+  id: number
+  title: string
+  slug: string
+  description: string
+  excerpt?: string
+  cover_image?: string
+  location?: string
+  event_date: string
+  registration_deadline?: string
+  max_participants?: number
+  status: EventStatus
+  author_id: number
+  author: User
+  organization_id?: number
+  organization?: Organization
+  published_at?: string
+  created_at: string
+  updated_at?: string
+  registrations_count: number
+}
+
+export interface EventList {
+  id: number
+  title: string
+  slug: string
+  excerpt?: string
+  cover_image?: string
+  location?: string
+  event_date: string
+  status: EventStatus
+  author: User
+  organization?: Organization
+  registrations_count: number
+}
+
+export interface EventCreate {
+  title: string
+  slug: string
+  description: string
+  excerpt?: string
+  cover_image?: string
+  location?: string
+  event_date: string
+  registration_deadline?: string
+  max_participants?: number
+  status: EventStatus
+  organization_id?: number
+}
+
+export interface EventUpdate {
+  title?: string
+  slug?: string
+  description?: string
+  excerpt?: string
+  cover_image?: string
+  location?: string
+  event_date?: string
+  registration_deadline?: string
+  max_participants?: number
+  status?: EventStatus
+  organization_id?: number
+}
+
+export interface EventRegistration {
+  id: number
+  event_id: number
+  user_id?: number
+  user?: User
+  guest_name?: string
+  guest_email?: string
+  guest_phone?: string
+  notes?: string
+  status: RegistrationStatus
+  registered_at: string
+}
+
+export interface EventRegistrationCreate {
+  event_id: number
+  guest_name?: string
+  guest_email?: string
+  guest_phone?: string
+  notes?: string
+}
